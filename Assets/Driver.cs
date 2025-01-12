@@ -21,13 +21,13 @@ public class Driver : MonoBehaviour
 
     void playerRotation()
     {
-        float steerAmount = Input.GetAxis("Horizontal") * steerSpeed;
+        float steerAmount = Input.GetAxis("Horizontal") * steerSpeed * Time.deltaTime;
         transform.Rotate(0, 0, -steerAmount);
     }
 
     void playerMovement()
     {
-        float moveAmount = Input.GetAxis("Vertical") * moveSpeed;
+        float moveAmount = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
         transform.Translate(0, moveAmount, 0);
     }
 }
