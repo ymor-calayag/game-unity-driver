@@ -1,9 +1,10 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Driver : MonoBehaviour
 {
-    float steerSpeed = 0.1f;
-    float moveSpeed = 0.01f;
+    [SerializeField] float steerSpeed = 0.1f;
+    [SerializeField] float moveSpeed = 0.01f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,11 +21,13 @@ public class Driver : MonoBehaviour
 
     void playerRotation()
     {
-        transform.Rotate(0, 0, steerSpeed);
+        float steerAmount = Input.GetAxis("Horizontal") * steerSpeed;
+        transform.Rotate(0, 0, -steerAmount);
     }
 
     void playerMovement()
     {
-        transform.Translate(0, moveSpeed, 0);
+        float moveAmount = Input.GetAxis("Vertical") * moveSpeed;
+        transform.Translate(0, moveAmount, 0);
     }
 }
